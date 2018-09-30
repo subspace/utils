@@ -13,5 +13,5 @@ import {getClosestId} from '@subspace/utils';
 ```
 
 ## API
-### getClosestId(sourceId: Uint8Array, targetIds: Uint8Array[]): Uint8Array
-Given a source ID and an array of target IDs returns one target ID that is closest to source ID.
+### getClosestIdsByXor(sourceId: Uint8Array, targetIds: Uint8Array[], n: number = 1): Uint8Array
+Given a source ID and an array of target IDs returns `n` target ID that are closest to source ID by XOR metric.
