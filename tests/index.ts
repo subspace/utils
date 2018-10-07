@@ -1,8 +1,8 @@
 import * as test from 'tape';
-import {getClosestIdsByXor} from '../src';
+import {getClosestIdByXor} from '../src';
 
 test('Closest IDs', (t) => {
-    t.plan(3);
+    t.plan(2);
 
     const sourceId = Uint8Array.from(Buffer.from('f3fada9a3b8cf986ecb2f6e2d367dd9a011684aa5417a341beba11166f81ab93', 'hex'));
     const targetIds = [
@@ -13,17 +13,12 @@ test('Closest IDs', (t) => {
     ];
 
     t.same(
-        getClosestIdsByXor(sourceId, targetIds)[0],
+        getClosestIdByXor(sourceId, targetIds),
         targetIds[2],
         'Single closest ID selected correctly',
     );
     t.same(
-        getClosestIdsByXor(sourceId, targetIds, 2),
-        [targetIds[2], targetIds[0]],
-        'Multiple closest IDs selected correctly',
-    );
-    t.same(
-        getClosestIdsByXor(targetIds[1], targetIds)[0],
+        getClosestIdByXor(targetIds[1], targetIds),
         targetIds[1],
         'Own ID is closest to itself',
     );

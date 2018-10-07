@@ -3,24 +3,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @param sourceId
  * @param targetIds
- * @param n
  *
- * @return `n` IDs from `targetIds` that is closest to `sourceId` by XOR metric
+ * @return ID from `targetIds` that is closest to `sourceId` by XOR metric
  */
-function getClosestIdsByXor(sourceId, targetIds, n = 1) {
+function getClosestIdByXor(sourceId, targetIds) {
     const idLength = sourceId.length;
-    return targetIds
-        .slice() // Make copy of the array and don't mutate original one
-        .sort((id1, id2) => {
+    let closestIdByXor = targetIds[0];
+    for (const targetId of targetIds) {
         for (let byteOffset = 0; byteOffset < idLength; ++byteOffset) {
-            const diff = (sourceId[byteOffset] ^ id1[byteOffset]) - (sourceId[byteOffset] ^ id2[byteOffset]);
-            if (diff !== 0) {
-                return diff;
+            const diff = (sourceId[byteOffset] ^ closestIdByXor[byteOffset]) - (sourceId[byteOffset] ^ targetId[byteOffset]);
+            if (diff === 0) {
+                continue;
             }
+            if (diff > 0) {
+                closestIdByXor = targetId;
+            }
+            break;
         }
-        return 0;
-    })
-        .slice(0, n);
+    }
+    return closestIdByXor;
 }
-exports.getClosestIdsByXor = getClosestIdsByXor;
+exports.getClosestIdByXor = getClosestIdByXor;
 //# sourceMappingURL=index.js.map
