@@ -5,7 +5,7 @@
     "subspace"
   ],
   "version": "0.0.2",
-  "homepage": "https://github.com/subspace/transport",
+  "homepage": "https://github.com/subspace/utils",
   "author": "Nazar Mokrynskyi <nazar@mokrynskyi.com>",
   "license": "MIT",
   "private": true,
