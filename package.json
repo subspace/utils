@@ -8,7 +8,6 @@
   "homepage": "https://github.com/subspace/utils",
   "author": "Nazar Mokrynskyi <nazar@mokrynskyi.com>",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "build": "rm -rf dist/* && npm run lint && npm run compile",
     "compile": "tsc",
